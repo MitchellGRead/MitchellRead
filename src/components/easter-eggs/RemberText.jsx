@@ -15,7 +15,7 @@ export function RemberText({ children }) {
         fontWeight: 600,
         cursor: 'default',
         transition: 'all 0.3s ease',
-        textShadow: hovered ? '0 0 20px rgba(255, 107, 53, 0.5), 0 0 40px rgba(255, 107, 53, 0.3)' : 'none',
+        textShadow: hovered ? '0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(59, 130, 246, 0.3)' : 'none',
       }}
     >
       {children}

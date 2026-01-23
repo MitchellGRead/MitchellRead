@@ -20,6 +20,7 @@ export default function App() {
 
   return (
     <div style={{
+      width: '100%',
       minHeight: '100vh',
       backgroundColor: '#FAFAF8',
       color: '#1a1a1a',
@@ -46,7 +47,7 @@ export default function App() {
         right: '-10%',
         width: '50vw',
         height: '50vw',
-        background: 'radial-gradient(circle, rgba(255,107,53,0.06) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%)',
         pointerEvents: 'none',
         transition: 'transform 0.8s ease',
         transform: mounted ? 'scale(1)' : 'scale(0.8)',
@@ -213,7 +214,7 @@ export default function App() {
             flexWrap: 'wrap',
             marginTop: '16px',
           }}>
-            <ContactLink href="mailto:mitchell@rember.chat" label="Email" />
+            <ContactLink href="mailto:mitchell@getrember.com" label="Email" />
             <ContactLink href="https://www.linkedin.com/in/mitchell-read-09a9b313a/" label="LinkedIn" />
             <ContactLink href="https://github.com/MitchellGRead" label="GitHub" />
           </div>

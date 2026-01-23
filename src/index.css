@@ -1,12 +1,5 @@
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-}
+/* Additional styles - critical layout styles are in index.html */
 
 ::selection {
-  background: rgba(255, 107, 53, 0.2);
+  background: rgba(59, 130, 246, 0.2);
 }

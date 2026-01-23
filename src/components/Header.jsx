@@ -13,7 +13,7 @@ export function Header({ mounted }) {
         alignItems: 'center',
         gap: '8px',
         padding: '6px 12px',
-        backgroundColor: '#FF6B35',
+        backgroundColor: '#3B82F6',
         color: 'white',
         fontSize: '11px',
         fontFamily: 'monospace',
@@ -29,7 +29,7 @@ export function Header({ mounted }) {
           backgroundColor: 'rgba(255,255,255,0.8)',
           animation: 'pulse 2s ease-in-out infinite',
         }} />
-        YC W25 Applicant
+        Building in Public
       </div>
       
       <h1 style={{
