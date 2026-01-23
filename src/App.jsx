@@ -92,10 +92,70 @@ export default function App() {
             display: 'flex',
             gap: '24px',
             flexWrap: 'wrap',
+            marginBottom: '24px',
+          }}>
+            <ContactLink href="https://rember.tech" label="View Product" />
+            <ContactLink href="https://rember.chat" label="Sign Up" />
+          </div>
+          <div style={{
+            display: 'flex',
+            gap: '24px',
+            flexWrap: 'wrap',
           }}>
             <Stat label="Initial Market" value="Real Estate" />
             <Stat label="Validation" value="CREB Conference" />
-            <Stat label="Stage" value="Pre-seed" />
+            <Stat label="Stage" value="Bootstrapped" />
+          </div>
+        </Section>
+
+        {/* Team Section */}
+        <Section
+          delay={0.15}
+          mounted={mounted}
+          isHovered={hoveredSection === 'team'}
+          onHover={() => setHoveredSection('team')}
+          onLeave={() => setHoveredSection(null)}
+        >
+          <SectionLabel>Team</SectionLabel>
+          <div style={{
+            display: 'grid',
+            gap: '24px',
+          }}>
+            <div>
+              <h3 style={{
+                fontSize: '1rem',
+                fontWeight: 600,
+                margin: '0 0 4px 0',
+                color: '#1a1a1a',
+              }}>
+                Mitchell Read
+              </h3>
+              <p style={{
+                fontSize: '0.95rem',
+                color: '#666',
+                margin: '0 0 8px 0',
+              }}>
+                Co-founder, CTO
+              </p>
+            </div>
+            <div>
+              <h3 style={{
+                fontSize: '1rem',
+                fontWeight: 600,
+                margin: '0 0 4px 0',
+                color: '#1a1a1a',
+              }}>
+                Mazen Wafai
+              </h3>
+              <p style={{
+                fontSize: '0.95rem',
+                color: '#666',
+                margin: '0 0 8px 0',
+              }}>
+                Co-founder, CEO
+              </p>
+              <ContactLink href="https://www.linkedin.com/in/mazenwafai/" label="LinkedIn" />
+            </div>
           </div>
         </Section>
 
@@ -129,7 +189,9 @@ export default function App() {
             <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: '#333', margin: 0 }}>
               Started as a co-op and grew to P3 Engineer. Led cross-functional initiatives 
               integrating backend systems with mobile clients. Built a bespoke home experience 
-              that shipped to <UsersText>millions of users</UsersText>. Learned how enterprise software actually gets built.
+              that shipped to <UsersText>millions of users</UsersText>. Worked on one of the largest 
+              and most configurable HCM/CRM platforms in the world. Experienced firsthand the pain 
+              of rigid systems that fight users instead of serving them — the insight driving Rember.
             </p>
           </div>
 

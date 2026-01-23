@@ -44,7 +44,7 @@ export function Header({ mounted }) {
           opacity: mounted ? 1 : 0,
           transform: mounted ? 'translateY(0)' : 'translateY(15px)',
           transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s',
-        }}>Mitchell</span>
+        }}>Mitchell Read</span>
         <span style={{
           display: 'block',
           color: '#666',
