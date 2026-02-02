@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { RemberText } from './easter-eggs/RemberText.jsx';
 import { ContactLink } from './ContactLink.jsx';
 
@@ -14,6 +14,9 @@ const phrases = [
 export function Header({ mounted }) {
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [badgeWidth, setBadgeWidth] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const textRef = useRef(null);
 
   useEffect(() => {
     if (!mounted) return;
@@ -28,6 +31,22 @@ export function Header({ mounted }) {
 
     return () => clearInterval(interval);
   }, [mounted]);
+
+  useEffect(() => {
+    if (textRef.current && !isTransitioning) {
+      setBadgeWidth(textRef.current.offsetWidth);
+    }
+  }, [currentPhraseIndex, isTransitioning]);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <header style={{
@@ -49,6 +68,9 @@ export function Header({ mounted }) {
         textTransform: 'uppercase',
         marginBottom: '24px',
         borderRadius: '2px',
+        width: badgeWidth ? `${badgeWidth + 40}px` : 'auto',
+        transition: 'width 0.3s ease',
+        overflow: 'hidden',
       }}>
         <span style={{
           width: '6px',
@@ -56,32 +78,29 @@ export function Header({ mounted }) {
           borderRadius: '50%',
           backgroundColor: 'rgba(255,255,255,0.8)',
           animation: 'pulse 2s ease-in-out infinite',
+          flexShrink: 0,
         }} />
-        <span style={{
-          opacity: isTransitioning ? 0 : 1,
-          transform: isTransitioning ? 'translateY(-10px)' : 'translateY(0)',
-          transition: 'all 0.3s ease',
-          minWidth: '180px',
-          display: 'inline-block',
-        }}>
+        <span 
+          ref={textRef}
+          style={{
+            opacity: isTransitioning ? 0 : 1,
+            transform: isTransitioning ? 'translateY(-10px)' : 'translateY(0)',
+            transition: 'all 0.3s ease',
+            display: 'inline-block',
+            whiteSpace: 'nowrap',
+          }}>
           {phrases[currentPhraseIndex]}
         </span>
       </div>
       
-      <div style={{
-        display: 'flex',
-        gap: '32px',
-        alignItems: 'flex-start',
-        flexWrap: 'wrap',
-      }}>
-        {/* Photo placeholder */}
+      <div style={{ position: 'relative' }}>
+        {/* Photo placeholder - positioned on right */}
         <div style={{
           width: '120px',
           height: '120px',
           borderRadius: '50%',
           backgroundColor: 'var(--border)',
           border: '2px solid var(--border-light)',
-          flexShrink: 0,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -89,11 +108,19 @@ export function Header({ mounted }) {
           opacity: mounted ? 1 : 0,
           transform: mounted ? 'translateY(0)' : 'translateY(15px)',
           transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s',
+          float: isMobile ? 'none' : 'right',
+          shapeOutside: isMobile ? 'none' : 'circle(50%)',
+          marginLeft: isMobile ? '0' : '32px',
+          marginBottom: '16px',
+          marginRight: isMobile ? 'auto' : '0',
+          marginTop: isMobile ? '24px' : '0',
         }}>
           MR
         </div>
         
-        <div style={{ flex: 1, minWidth: '280px' }}>
+        <div style={{ 
+          paddingRight: isMobile ? '0' : '0',
+        }}>
           <h1 style={{
             fontSize: 'clamp(2.5rem, 8vw, 4rem)',
             fontWeight: 400,
@@ -165,6 +192,8 @@ export function Header({ mounted }) {
             <ContactLink href="https://github.com/MitchellGRead" label="GitHub" />
           </div>
         </div>
+        {/* Clearfix for float */}
+        <div style={{ clear: 'both' }} />
       </div>
     </header>
   );
