@@ -17,7 +17,8 @@ export function GitHubRepo({ name, description, url, language, stars }) {
         padding: '20px',
         borderRadius: '8px',
         border: `1px solid var(--border)`,
-        backgroundColor: hovered ? 'var(--bg-hover)' : 'transparent',
+        backgroundColor: 'var(--bg-card)',
+        boxShadow: hovered ? 'var(--shadow-card-hover)' : 'var(--shadow-card)',
         transition: 'all 0.3s ease',
         transform: hovered ? 'translateY(-2px)' : 'translateY(0)',
       }}
