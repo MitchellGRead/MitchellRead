@@ -332,6 +332,9 @@ export default function App() {
           <p style={{ fontSize: '1.1rem', lineHeight: 1.7, color: 'var(--text-light)', margin: '16px 0 0 0' }}>
             Everything happening gives me the same giddy feeling I had as a kid staying up all night in front of the family computer. To quote my own mother: <strong>"If you never try something, how will you know what works?"</strong>
           </p>
+          <p style={{ fontSize: '0.95rem', lineHeight: 1.7, color: 'var(--text-secondary)', margin: '16px 0 0 0', fontStyle: 'italic' }}>
+            P.S. If you're the curious type, hover around—there might be a few surprises hidden in the text & icons.
+          </p>
         </Section>
 
         {/* GitHub Repos Section */}
