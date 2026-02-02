@@ -157,43 +157,6 @@ export default function App() {
               backgroundColor: 'var(--bg-primary)',
             }}
           />
-          
-          <div style={{
-            marginTop: '32px',
-            paddingTop: '24px',
-            borderTop: `1px solid var(--border)`,
-            fontSize: '0.9rem',
-            color: 'var(--text-secondary)',
-          }}>
-            <div style={{
-              display: 'flex',
-              gap: '20px',
-              flexWrap: 'wrap',
-              alignItems: 'baseline',
-            }}>
-              <span>
-                <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Mitchell Read</span>
-                <span style={{ marginLeft: '6px' }}>Co-founder, CTO</span>
-              </span>
-              <span>
-                <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Mazen Wafai</span>
-                <span style={{ marginLeft: '6px' }}>Co-founder, CEO</span>
-                {' '}
-                <a
-                  href="https://www.linkedin.com/in/mazenwafai/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    color: 'var(--accent)',
-                    textDecoration: 'none',
-                    marginLeft: '4px',
-                  }}
-                >
-                  LinkedIn →
-                </a>
-              </span>
-            </div>
-          </div>
         </Section>
 
         {/* Background Section */}
@@ -291,9 +254,10 @@ export default function App() {
         >
           <SectionLabel>Why I Build</SectionLabel>
           <p style={{ fontSize: '1.1rem', lineHeight: 1.7, color: 'var(--text-light)', margin: 0 }}>
-            I've seen how enterprise software gets made at scale — and how it often fails the people 
-            who use it. Rember is my bet that software can be <em>genuinely</em> helpful, 
-            not just powerful. That it can strengthen human relationships instead of abstracting them away.
+            I've seen how software gets made at scale — and how it often fails the people who use it. 
+            I build because I believe technology should be <em>genuinely</em> helpful, not just powerful. 
+            That it should strengthen human connections instead of abstracting them away. 
+            The best work happens when you stay close to the problem and the people it affects.
           </p>
         </Section>
 

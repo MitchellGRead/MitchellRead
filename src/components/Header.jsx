@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { RemberText } from './easter-eggs/RemberText.jsx';
 import { ContactLink } from './ContactLink.jsx';
+import profileImage from '../assets/profile.jpeg';
 
 const phrases = [
   "Building with AI",
@@ -94,29 +95,27 @@ export function Header({ mounted }) {
       </div>
       
       <div style={{ position: 'relative' }}>
-        {/* Photo placeholder - positioned on right */}
-        <div style={{
-          width: '120px',
-          height: '120px',
-          borderRadius: '50%',
-          backgroundColor: 'var(--border)',
-          border: '2px solid var(--border-light)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontSize: '3rem',
-          opacity: mounted ? 1 : 0,
-          transform: mounted ? 'translateY(0)' : 'translateY(15px)',
-          transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s',
-          float: isMobile ? 'none' : 'right',
-          shapeOutside: isMobile ? 'none' : 'circle(50%)',
-          marginLeft: isMobile ? '0' : '32px',
-          marginBottom: '16px',
-          marginRight: isMobile ? 'auto' : '0',
-          marginTop: isMobile ? '24px' : '0',
-        }}>
-          MR
-        </div>
+        {/* Profile photo - positioned on right */}
+        <img 
+          src={profileImage}
+          alt="Mitchell Read"
+          style={{
+            width: '120px',
+            height: '120px',
+            borderRadius: '50%',
+            objectFit: 'cover',
+            border: '2px solid var(--border-light)',
+            opacity: mounted ? 1 : 0,
+            transform: mounted ? 'translateY(0)' : 'translateY(15px)',
+            transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s',
+            float: isMobile ? 'none' : 'right',
+            shapeOutside: isMobile ? 'none' : 'circle(50%)',
+            marginLeft: isMobile ? '0' : '32px',
+            marginBottom: '16px',
+            marginRight: isMobile ? 'auto' : '0',
+            marginTop: isMobile ? '24px' : '0',
+          }}
+        />
         
         <div style={{ 
           paddingRight: isMobile ? '0' : '0',
