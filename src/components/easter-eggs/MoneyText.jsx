@@ -5,8 +5,8 @@ import { ParticleText } from './ParticleText.jsx';
  */
 export function MoneyText({ children, amount }) {
   const emojis = amount === 'big' 
-    ? ['💰', '💵', '💎', '📈', '🤑'] 
-    : ['💵', '💰', '📊'];
+    ? ['💰', '💵'] 
+    : ['💵', '💰'];
   
   const particleCount = amount === 'big' ? 8 : 5;
   

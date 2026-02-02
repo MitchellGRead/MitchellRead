@@ -106,55 +106,41 @@ export default function App() {
             <Stat label="Validation" value="CREB Conference" />
             <Stat label="Stage" value="Bootstrapped" />
           </div>
-        </Section>
-
-        {/* Team Section */}
-        <Section
-          delay={0.15}
-          mounted={mounted}
-          isHovered={hoveredSection === 'team'}
-          onHover={() => setHoveredSection('team')}
-          onLeave={() => setHoveredSection(null)}
-        >
-          <SectionLabel>Team</SectionLabel>
+          
           <div style={{
-            display: 'grid',
-            gap: '24px',
+            marginTop: '32px',
+            paddingTop: '24px',
+            borderTop: '1px solid rgba(0,0,0,0.06)',
+            fontSize: '0.9rem',
+            color: '#666',
           }}>
-            <div>
-              <h3 style={{
-                fontSize: '1rem',
-                fontWeight: 600,
-                margin: '0 0 4px 0',
-                color: '#1a1a1a',
-              }}>
-                Mitchell Read
-              </h3>
-              <p style={{
-                fontSize: '0.95rem',
-                color: '#666',
-                margin: '0 0 8px 0',
-              }}>
-                Co-founder, CTO
-              </p>
-            </div>
-            <div>
-              <h3 style={{
-                fontSize: '1rem',
-                fontWeight: 600,
-                margin: '0 0 4px 0',
-                color: '#1a1a1a',
-              }}>
-                Mazen Wafai
-              </h3>
-              <p style={{
-                fontSize: '0.95rem',
-                color: '#666',
-                margin: '0 0 8px 0',
-              }}>
-                Co-founder, CEO
-              </p>
-              <ContactLink href="https://www.linkedin.com/in/mazenwafai/" label="LinkedIn" />
+            <div style={{
+              display: 'flex',
+              gap: '20px',
+              flexWrap: 'wrap',
+              alignItems: 'baseline',
+            }}>
+              <span>
+                <span style={{ color: '#1a1a1a', fontWeight: 500 }}>Mitchell Read</span>
+                <span style={{ marginLeft: '6px' }}>Co-founder, CTO</span>
+              </span>
+              <span>
+                <span style={{ color: '#1a1a1a', fontWeight: 500 }}>Mazen Wafai</span>
+                <span style={{ marginLeft: '6px' }}>Co-founder, CEO</span>
+                {' '}
+                <a
+                  href="https://www.linkedin.com/in/mazenwafai/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: '#3B82F6',
+                    textDecoration: 'none',
+                    marginLeft: '4px',
+                  }}
+                >
+                  LinkedIn →
+                </a>
+              </span>
             </div>
           </div>
         </Section>
