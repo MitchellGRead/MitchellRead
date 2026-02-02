@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ContactLink } from './components/ContactLink.jsx';
+import { GitHubRepo } from './components/GitHubRepo.jsx';
 import { Header } from './components/Header.jsx';
 import { MapleLeaf } from './components/MapleLeaf.jsx';
 import { Section } from './components/Section.jsx';
@@ -12,6 +13,8 @@ export default function App() {
   const [mounted, setMounted] = useState(false);
   const [hoveredSection, setHoveredSection] = useState(null);
   const [darkMode, setDarkMode] = useState(false);
+  const [repos, setRepos] = useState([]);
+  const [reposLoading, setReposLoading] = useState(true);
 
   useEffect(() => {
     setMounted(true);
@@ -22,6 +25,39 @@ export default function App() {
       document.documentElement.setAttribute('data-theme', 'dark');
     }
   }, []);
+
+  useEffect(() => {
+    const fetchRepos = async () => {
+      try {
+        const response = await fetch(
+          'https://api.github.com/users/MitchellGRead/repos?sort=updated&per_page=6&type=owner'
+        );
+        if (!response.ok) {
+          throw new Error('Failed to fetch repos');
+        }
+        const data = await response.json();
+        // Filter out forks and map to component props
+        const filteredRepos = data
+          .filter(repo => !repo.fork)
+          .map(repo => ({
+            name: repo.name,
+            description: repo.description,
+            url: repo.html_url,
+            language: repo.language,
+            stars: repo.stargazers_count,
+          }));
+        setRepos(filteredRepos);
+        setReposLoading(false);
+      } catch (error) {
+        console.error('Failed to fetch repos:', error);
+        setReposLoading(false);
+      }
+    };
+    
+    if (mounted) {
+      fetchRepos();
+    }
+  }, [mounted]);
 
   const toggleDarkMode = () => {
     const newMode = !darkMode;
@@ -237,7 +273,7 @@ export default function App() {
               margin: '0 0 8px 0',
               color: 'var(--text-primary)',
             }}>
-              Public Markets
+              Quantitative Analyst + Portfolio Manager - Public Markets
             </h3>
             <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: 'var(--text-light)', margin: 0 }}>
               Co-op at a fund managing <MoneyText amount="big">$3.2B globally</MoneyText> in public equities. 
@@ -293,6 +329,52 @@ export default function App() {
             That it should strengthen human connections instead of abstracting them away. 
             The best work happens when you stay close to the problem and the people it affects.
           </p>
+        </Section>
+
+        {/* GitHub Repos Section */}
+        <Section
+          delay={0.35}
+          mounted={mounted}
+          isHovered={hoveredSection === 'repos'}
+          onHover={() => setHoveredSection('repos')}
+          onLeave={() => setHoveredSection(null)}
+        >
+          <SectionLabel>GitHub</SectionLabel>
+          {reposLoading ? (
+            <div style={{
+              padding: '20px',
+              textAlign: 'center',
+              color: 'var(--text-secondary)',
+              fontSize: '0.95rem',
+            }}>
+              Loading repositories...
+            </div>
+          ) : repos.length > 0 ? (
+            <div style={{
+              display: 'grid',
+              gap: '16px',
+            }}>
+              {repos.map((repo, index) => (
+                <GitHubRepo
+                  key={repo.url}
+                  name={repo.name}
+                  description={repo.description}
+                  url={repo.url}
+                  language={repo.language}
+                  stars={repo.stars}
+                />
+              ))}
+            </div>
+          ) : (
+            <div style={{
+              padding: '20px',
+              textAlign: 'center',
+              color: 'var(--text-secondary)',
+              fontSize: '0.95rem',
+            }}>
+              No repositories found.
+            </div>
+          )}
         </Section>
 
         {/* Contact */}
