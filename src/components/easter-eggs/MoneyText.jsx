@@ -12,7 +12,7 @@ export function MoneyText({ children, amount }) {
   
   return (
     <strong style={{ 
-      color: '#1a1a1a', 
+      color: 'var(--text-primary)', 
       fontWeight: 600,
     }}>
       <ParticleText

@@ -11,12 +11,12 @@ export function ContactLink({ href, label }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        color: hovered ? '#3B82F6' : '#1a1a1a',
+        color: hovered ? 'var(--accent)' : 'var(--text-primary)',
         textDecoration: 'none',
         fontSize: '1.1rem',
         fontWeight: 500,
         transition: 'all 0.25s ease',
-        borderBottom: hovered ? '2px solid #3B82F6' : '2px solid transparent',
+        borderBottom: hovered ? `2px solid var(--accent)` : '2px solid transparent',
         paddingBottom: '2px',
       }}
     >

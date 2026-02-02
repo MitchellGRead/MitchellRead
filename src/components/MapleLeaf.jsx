@@ -13,7 +13,7 @@ export function MapleLeaf() {
     <p style={{
       marginTop: '40px',
       fontSize: '0.9rem',
-      color: '#888',
+      color: 'var(--text-tertiary)',
       fontFamily: 'monospace',
     }}>
       Victoria, BC{' '}

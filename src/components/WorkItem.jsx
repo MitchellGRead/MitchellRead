@@ -27,14 +27,14 @@ export function WorkItem({ title, description, emoji }) {
           fontSize: '1.1rem',
           fontWeight: 600,
           margin: '0 0 6px 0',
-          color: '#1a1a1a',
+          color: 'var(--text-primary)',
         }}>
           {title}
         </h3>
         <p style={{ 
           fontSize: '1.05rem', 
           lineHeight: 1.7, 
-          color: '#555', 
+          color: 'var(--text-quinary)', 
           margin: 0,
         }}>
           {description}

@@ -5,7 +5,7 @@ export function SectionLabel({ children }) {
       fontFamily: 'monospace',
       letterSpacing: '0.15em',
       textTransform: 'uppercase',
-      color: '#3B82F6',
+      color: 'var(--accent)',
       marginBottom: '12px',
       fontWeight: 500,
     }}>

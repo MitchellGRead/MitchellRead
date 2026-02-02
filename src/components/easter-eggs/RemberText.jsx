@@ -11,11 +11,11 @@ export function RemberText({ children }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{ 
-        color: '#1a1a1a', 
+        color: 'var(--text-primary)', 
         fontWeight: 600,
         cursor: 'default',
         transition: 'all 0.3s ease',
-        textShadow: hovered ? '0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(59, 130, 246, 0.3)' : 'none',
+        textShadow: hovered ? '0 0 20px var(--accent-light), 0 0 40px var(--accent-light)' : 'none',
       }}
     >
       {children}

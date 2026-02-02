@@ -4,37 +4,89 @@ import { Header } from './components/Header.jsx';
 import { MapleLeaf } from './components/MapleLeaf.jsx';
 import { Section } from './components/Section.jsx';
 import { SectionLabel } from './components/SectionLabel.jsx';
-import { Stat } from './components/Stat.jsx';
 import { WorkItem } from './components/WorkItem.jsx';
-import { HouseText } from './components/easter-eggs/HouseText.jsx';
 import { MoneyText } from './components/easter-eggs/MoneyText.jsx';
 import { UsersText } from './components/easter-eggs/UsersText.jsx';
 
 export default function App() {
   const [mounted, setMounted] = useState(false);
   const [hoveredSection, setHoveredSection] = useState(null);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    // Check for saved theme preference or default to light mode
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      setDarkMode(true);
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
   }, []);
+
+  const toggleDarkMode = () => {
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    if (newMode) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+    }
+  };
 
   return (
     <div style={{
       width: '100%',
       minHeight: '100vh',
-      backgroundColor: '#FAFAF8',
-      color: '#1a1a1a',
+      backgroundColor: 'var(--bg-primary)',
+      color: 'var(--text-primary)',
       fontFamily: 'Georgia, serif',
       position: 'relative',
       overflow: 'hidden',
     }}>
+      {/* Dark mode toggle */}
+      <button
+        onClick={toggleDarkMode}
+        style={{
+          position: 'fixed',
+          top: '24px',
+          right: '24px',
+          zIndex: 1000,
+          width: '48px',
+          height: '48px',
+          borderRadius: '50%',
+          border: '1px solid var(--border-light)',
+          backgroundColor: 'var(--bg-primary)',
+          color: 'var(--text-primary)',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: '1.25rem',
+          transition: 'all 0.3s ease',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'scale(1.1)';
+          e.currentTarget.style.backgroundColor = 'var(--bg-hover)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'scale(1)';
+          e.currentTarget.style.backgroundColor = 'var(--bg-primary)';
+        }}
+        aria-label="Toggle dark mode"
+      >
+        {darkMode ? '☀️' : '🌙'}
+      </button>
+
       {/* Subtle grid background */}
       <div style={{
         position: 'fixed',
         inset: 0,
         backgroundImage: `
-          linear-gradient(rgba(0,0,0,0.018) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0,0,0,0.018) 1px, transparent 1px)
+          linear-gradient(var(--grid-line) 1px, transparent 1px),
+          linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)
         `,
         backgroundSize: '60px 60px',
         pointerEvents: 'none',
@@ -47,7 +99,7 @@ export default function App() {
         right: '-10%',
         width: '50vw',
         height: '50vw',
-        background: 'radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%)',
+        background: `radial-gradient(circle, var(--accent-light) 0%, transparent 70%)`,
         pointerEvents: 'none',
         transition: 'transform 0.8s ease',
         transform: mounted ? 'scale(1)' : 'scale(0.8)',
@@ -75,18 +127,14 @@ export default function App() {
             fontWeight: 400,
             margin: '0 0 16px 0',
             letterSpacing: '-0.01em',
+            color: 'var(--text-primary)',
           }}>
             Rember
           </h2>
-          <p style={{ fontSize: '1.1rem', lineHeight: 1.7, color: '#333', margin: '0 0 16px 0' }}>
+          <p style={{ fontSize: '1.1rem', lineHeight: 1.7, color: 'var(--text-light)', margin: '0 0 20px 0' }}>
             CRMs are where relationships go to die — buried under data entry, forgotten follow-ups, 
             and context that slips through the cracks. Rember fixes this by automatically capturing 
             and surfacing the moments that matter, so you can focus on people, not process.
-          </p>
-          <p style={{ fontSize: '1.1rem', lineHeight: 1.7, color: '#333', margin: '0 0 20px 0' }}>
-            We're starting with <HouseText>real estate</HouseText> — an industry built entirely on relationships — 
-            and recently validated our approach at the <strong>CREB Realtors Conference</strong>. 
-            The vision extends to any profession where client relationships drive success.
           </p>
           <div style={{
             display: 'flex',
@@ -97,22 +145,25 @@ export default function App() {
             <ContactLink href="https://rember.tech" label="View Product" />
             <ContactLink href="https://rember.chat" label="Sign Up" />
           </div>
-          <div style={{
-            display: 'flex',
-            gap: '24px',
-            flexWrap: 'wrap',
-          }}>
-            <Stat label="Initial Market" value="Real Estate" />
-            <Stat label="Validation" value="CREB Conference" />
-            <Stat label="Stage" value="Bootstrapped" />
-          </div>
+          <iframe 
+            src="https://rember.tech"
+            title="Rember Website"
+            style={{
+              width: '100%',
+              height: '400px',
+              border: `1px solid var(--border-iframe)`,
+              borderRadius: '8px',
+              marginTop: '24px',
+              backgroundColor: 'var(--bg-primary)',
+            }}
+          />
           
           <div style={{
             marginTop: '32px',
             paddingTop: '24px',
-            borderTop: '1px solid rgba(0,0,0,0.06)',
+            borderTop: `1px solid var(--border)`,
             fontSize: '0.9rem',
-            color: '#666',
+            color: 'var(--text-secondary)',
           }}>
             <div style={{
               display: 'flex',
@@ -121,11 +172,11 @@ export default function App() {
               alignItems: 'baseline',
             }}>
               <span>
-                <span style={{ color: '#1a1a1a', fontWeight: 500 }}>Mitchell Read</span>
+                <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Mitchell Read</span>
                 <span style={{ marginLeft: '6px' }}>Co-founder, CTO</span>
               </span>
               <span>
-                <span style={{ color: '#1a1a1a', fontWeight: 500 }}>Mazen Wafai</span>
+                <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Mazen Wafai</span>
                 <span style={{ marginLeft: '6px' }}>Co-founder, CEO</span>
                 {' '}
                 <a
@@ -133,7 +184,7 @@ export default function App() {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    color: '#3B82F6',
+                    color: 'var(--accent)',
                     textDecoration: 'none',
                     marginLeft: '4px',
                   }}
@@ -159,6 +210,7 @@ export default function App() {
             fontWeight: 400,
             margin: '0 0 20px 0',
             letterSpacing: '-0.01em',
+            color: 'var(--text-primary)',
           }}>
             Enterprise Engineering + Public Markets
           </h2>
@@ -168,11 +220,11 @@ export default function App() {
               fontSize: '1rem',
               fontWeight: 600,
               margin: '0 0 8px 0',
-              color: '#1a1a1a',
+              color: 'var(--text-primary)',
             }}>
-              Workday <span style={{ fontWeight: 400, color: '#666' }}>— 4 years</span>
+              Workday <span style={{ fontWeight: 400, color: 'var(--text-secondary)' }}>— 4 years</span>
             </h3>
-            <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: '#333', margin: 0 }}>
+            <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: 'var(--text-light)', margin: 0 }}>
               Started as a co-op and grew to P3 Engineer. Led cross-functional initiatives 
               integrating backend systems with mobile clients. Built a bespoke home experience 
               that shipped to <UsersText>millions of users</UsersText>. Worked on one of the largest 
@@ -186,11 +238,11 @@ export default function App() {
               fontSize: '1rem',
               fontWeight: 600,
               margin: '0 0 8px 0',
-              color: '#1a1a1a',
+              color: 'var(--text-primary)',
             }}>
               Public Markets
             </h3>
-            <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: '#333', margin: 0 }}>
+            <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: 'var(--text-light)', margin: 0 }}>
               Co-op at a fund managing <MoneyText amount="big">$3.2B globally</MoneyText> in public equities. 
               Served as portfolio manager for the UVic investment fund, directly managing <MoneyText amount="small">$2.6M</MoneyText>. 
               Learned to make decisions with incomplete information and live with the consequences.
@@ -238,7 +290,7 @@ export default function App() {
           onLeave={() => setHoveredSection(null)}
         >
           <SectionLabel>Why I Build</SectionLabel>
-          <p style={{ fontSize: '1.1rem', lineHeight: 1.7, color: '#333', margin: 0 }}>
+          <p style={{ fontSize: '1.1rem', lineHeight: 1.7, color: 'var(--text-light)', margin: 0 }}>
             I've seen how enterprise software gets made at scale — and how it often fails the people 
             who use it. Rember is my bet that software can be <em>genuinely</em> helpful, 
             not just powerful. That it can strengthen human relationships instead of abstracting them away.
@@ -249,7 +301,7 @@ export default function App() {
         <footer style={{
           marginTop: '80px',
           paddingTop: '40px',
-          borderTop: '1px solid rgba(0,0,0,0.08)',
+          borderTop: `1px solid var(--border-light)`,
           opacity: mounted ? 1 : 0,
           transform: mounted ? 'translateY(0)' : 'translateY(20px)',
           transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',

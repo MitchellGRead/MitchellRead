@@ -17,7 +17,7 @@ export function Stat({ label, value }) {
         fontFamily: 'monospace',
         letterSpacing: '0.05em',
         textTransform: 'uppercase',
-        color: '#888',
+        color: 'var(--text-tertiary)',
         marginBottom: '4px',
       }}>
         {label}
@@ -25,7 +25,7 @@ export function Stat({ label, value }) {
       <div style={{
         fontSize: '1rem',
         fontWeight: 600,
-        color: '#1a1a1a',
+        color: 'var(--text-primary)',
       }}>
         {value}
       </div>
