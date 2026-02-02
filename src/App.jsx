@@ -53,7 +53,7 @@ export default function App() {
         setReposLoading(false);
       }
     };
-    
+
     if (mounted) {
       fetchRepos();
     }
@@ -114,38 +114,38 @@ export default function App() {
         aria-label="Toggle dark mode"
       >
         {darkMode ? (
-          <svg 
-            width="20" 
-            height="20" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
             strokeLinejoin="round"
           >
-            <circle cx="12" cy="12" r="5"/>
-            <line x1="12" y1="1" x2="12" y2="3"/>
-            <line x1="12" y1="21" x2="12" y2="23"/>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-            <line x1="1" y1="12" x2="3" y2="12"/>
-            <line x1="21" y1="12" x2="23" y2="12"/>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
           </svg>
         ) : (
-          <svg 
-            width="20" 
-            height="20" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
             strokeLinejoin="round"
           >
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
           </svg>
         )}
       </button>
@@ -202,8 +202,8 @@ export default function App() {
             Rember
           </h2>
           <p style={{ fontSize: '1.1rem', lineHeight: 1.7, color: 'var(--text-light)', margin: '0 0 20px 0' }}>
-            CRMs are where relationships go to die — buried under data entry, forgotten follow-ups, 
-            and context that slips through the cracks. Rember fixes this by automatically capturing 
+            CRMs are where relationships go to die — buried under data entry, forgotten follow-ups,
+            and context that slips through the cracks. Rember fixes this by automatically capturing
             and surfacing the moments that matter, so you can focus on people, not process.
           </p>
           <div style={{
@@ -215,7 +215,7 @@ export default function App() {
             <ContactLink href="https://rember.tech" label="View Product" />
             <ContactLink href="https://rember.chat" label="Sign Up" />
           </div>
-          <iframe 
+          <iframe
             src="https://rember.tech"
             title="Rember Website"
             style={{
@@ -258,10 +258,10 @@ export default function App() {
               Workday <span style={{ fontWeight: 400, color: 'var(--text-secondary)' }}>— 4 years</span>
             </h3>
             <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: 'var(--text-light)', margin: 0 }}>
-              Started as a co-op and grew to P3 Engineer. Led cross-functional initiatives 
-              integrating backend systems with mobile clients. Built a bespoke home experience 
-              that shipped to <UsersText>millions of users</UsersText>. Worked on one of the largest 
-              and most configurable HCM/CRM platforms in the world. Experienced firsthand the pain 
+              Started as a co-op and grew to P3 Engineer. Led cross-functional initiatives
+              integrating backend systems with web and mobile clients. Helped build a bespoke home experience
+              that shipped to <UsersText>millions of users</UsersText> and surfaced dynamically renderable content from one of the largest
+              and most configurable HCM/CRM platforms in the world. Experienced firsthand the pain
               of rigid systems that fight users instead of serving them — the insight driving Rember.
             </p>
           </div>
@@ -276,8 +276,8 @@ export default function App() {
               Quantitative Analyst + Portfolio Manager - Public Markets
             </h3>
             <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: 'var(--text-light)', margin: 0 }}>
-              Co-op at a fund managing <MoneyText amount="big">$3.2B globally</MoneyText> in public equities. 
-              Served as portfolio manager for the UVic investment fund, directly managing <MoneyText amount="small">$2.6M</MoneyText>. 
+              Co-op at BCI Pension Fund managing <MoneyText amount="big">$3.2B globally</MoneyText> in public equities.
+              Served as portfolio manager for the UVic investment fund, directly managing <MoneyText amount="small">$2.6M</MoneyText>.
               Learned to make decisions with incomplete information and live with the consequences.
             </p>
           </div>
@@ -296,18 +296,18 @@ export default function App() {
             display: 'grid',
             gap: '24px',
           }}>
-            <WorkItem 
-              title="Ship first, polish later" 
+            <WorkItem
+              title="Ship first, polish later"
               description="I'd rather have something real in front of users than a perfect plan in a doc. Feedback from the world beats feedback from your head."
               emoji="🚀"
             />
-            <WorkItem 
-              title="Own the whole stack" 
+            <WorkItem
+              title="Own the whole stack"
               description="I don't hand off problems. If it needs backend work, I do backend. If it needs infrastructure, I spin it up. Boundaries slow things down."
               emoji="🔧"
             />
-            <WorkItem 
-              title="Stay close to the problem" 
+            <WorkItem
+              title="Stay close to the problem"
               description="The best software comes from genuine curiosity about the people using it. I talk to users constantly — not to validate, but to understand."
               emoji="🎯"
             />
@@ -324,10 +324,13 @@ export default function App() {
         >
           <SectionLabel>Why I Build</SectionLabel>
           <p style={{ fontSize: '1.1rem', lineHeight: 1.7, color: 'var(--text-light)', margin: 0 }}>
-            I've seen how software gets made at scale — and how it often fails the people who use it. 
-            I build because I believe technology should be <em>genuinely</em> helpful, not just powerful. 
-            That it should strengthen human connections instead of abstracting them away. 
-            The best work happens when you stay close to the problem and the people it affects.
+            I have always had a passion for software and building things. Combine that with a need to be learning something new every day, and software feels like a once-in-a-lifetime opportunity.
+          </p>
+          <p style={{ fontSize: '1.1rem', lineHeight: 1.7, color: 'var(--text-light)', margin: '16px 0 0 0' }}>
+            With this comes a strong belief that AI—with the application of memory and ability to act—can enhance the human experience in ways not possible with traditional software. I build because I believe technology should be <em>genuinely</em> helpful, not just powerful.
+          </p>
+          <p style={{ fontSize: '1.1rem', lineHeight: 1.7, color: 'var(--text-light)', margin: '16px 0 0 0' }}>
+            Everything happening gives me the same giddy feeling I had as a kid staying up all night in front of the family computer. To quote my own mother: <strong>"If you never try something, how will you know what works?"</strong>
           </p>
         </Section>
 
@@ -398,7 +401,7 @@ export default function App() {
             <ContactLink href="https://www.linkedin.com/in/mitchell-read-09a9b313a/" label="LinkedIn" />
             <ContactLink href="https://github.com/MitchellGRead" label="GitHub" />
           </div>
-          
+
           <MapleLeaf />
         </footer>
       </main>

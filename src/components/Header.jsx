@@ -4,12 +4,12 @@ import { ContactLink } from './ContactLink.jsx';
 import profileImage from '../assets/profile.jpeg';
 
 const phrases = [
-  "Building with AI",
-  "Exploring new possibilities",
   "Shipping fast",
+  "Building with AI",
   "Learning in public",
   "Creating for humans",
-  "Solving real problems"
+  "Solving real problems",
+  "Exploring new possibilities",
 ];
 
 export function Header({ mounted }) {
