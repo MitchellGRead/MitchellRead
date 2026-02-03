@@ -1,7 +1,6 @@
-import { useEffect, useState, useRef } from 'react';
-import { RemberText } from './easter-eggs/RemberText.jsx';
+import { useEffect, useRef, useState } from 'react';
 import { ContactLink } from './ContactLink.jsx';
-import profileImage from '../assets/profile.jpeg';
+import { RemberText } from './easter-eggs/RemberText.jsx';
 
 const phrases = [
   "Shipping fast",
@@ -12,11 +11,19 @@ const phrases = [
   "Exploring new possibilities",
 ];
 
+const PROFILE_IMAGE_COUNT = 5;
+
+const getProfileImageSrc = (index) => {
+  return `/profile${index + 1}.jpg`;
+};
+
 export function Header({ mounted }) {
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [badgeWidth, setBadgeWidth] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [currentProfileIndex, setCurrentProfileIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
   const textRef = useRef(null);
 
   useEffect(() => {
@@ -97,8 +104,16 @@ export function Header({ mounted }) {
       <div style={{ position: 'relative' }}>
         {/* Profile photo - positioned on right */}
         <img 
-          src={profileImage}
+          src={getProfileImageSrc(currentProfileIndex)}
           alt="Mitchell Read"
+          onClick={() => {
+            if (isAnimating) return;
+            setIsAnimating(true);
+            setTimeout(() => {
+              setCurrentProfileIndex((prev) => (prev + 1) % PROFILE_IMAGE_COUNT);
+              setIsAnimating(false);
+            }, 300);
+          }}
           style={{
             width: '120px',
             height: '120px',
@@ -107,7 +122,9 @@ export function Header({ mounted }) {
             border: '2px solid var(--border-light)',
             opacity: mounted ? 1 : 0,
             transform: mounted ? 'translateY(0)' : 'translateY(15px)',
-            transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s',
+            transition: isAnimating ? 'none' : 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s',
+            animation: isAnimating ? 'bounceInOut 0.6s ease-in-out' : 'none',
+            cursor: 'pointer',
             float: isMobile ? 'none' : 'right',
             shapeOutside: isMobile ? 'none' : 'circle(50%)',
             marginLeft: isMobile ? '0' : '32px',
