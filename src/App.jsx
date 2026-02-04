@@ -195,12 +195,21 @@ export default function App() {
           <h2 style={{
             fontSize: '1.75rem',
             fontWeight: 400,
-            margin: '0 0 16px 0',
+            margin: '0 0 8px 0',
             letterSpacing: '-0.01em',
             color: 'var(--text-primary)',
           }}>
             Rember
           </h2>
+          <p style={{ 
+            fontSize: '1rem', 
+            fontWeight: 300,
+            margin: '0 0 16px 0',
+            color: 'var(--text-light)',
+            letterSpacing: '0.01em',
+          }}>
+            Co-founder & CTO
+          </p>
           <p style={{ fontSize: '1.1rem', lineHeight: 1.7, color: 'var(--text-light)', margin: '0 0 20px 0' }}>
             CRMs are where relationships go to die — buried under data entry, forgotten follow-ups,
             and context that slips through the cracks. Rember fixes this by automatically capturing
