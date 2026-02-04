@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "docker:build": "docker build -t mitchell-site .",
+    "docker:run": "docker run -p 3000:80 -d mitchell-site",
     "lint": "eslint .",
     "preview": "vite preview"
   },
