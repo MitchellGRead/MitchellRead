@@ -50,10 +50,18 @@ export function Header({ mounted }) {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Preload all profile images
+  useEffect(() => {
+    for (let i = 0; i < PROFILE_IMAGE_COUNT; i++) {
+      const img = new Image();
+      img.src = getProfileImageSrc(i);
+    }
   }, []);
 
   return (
