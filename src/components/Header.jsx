@@ -111,9 +111,7 @@ export function Header({ mounted }) {
       
       <div style={{ position: 'relative' }}>
         {/* Profile photo - positioned on right */}
-        <img 
-          src={getProfileImageSrc(currentProfileIndex)}
-          alt="Mitchell Read"
+        <div
           onClick={() => {
             if (isAnimating) return;
             setIsAnimating(true);
@@ -123,24 +121,35 @@ export function Header({ mounted }) {
             }, 300);
           }}
           style={{
-            width: '120px',
-            height: '120px',
-            borderRadius: '50%',
-            objectFit: 'cover',
-            border: '2px solid var(--border-light)',
-            opacity: mounted ? 1 : 0,
-            transform: mounted ? 'translateY(0)' : 'translateY(15px)',
-            transition: isAnimating ? 'none' : 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s',
-            animation: isAnimating ? 'bounceInOut 0.6s ease-in-out' : 'none',
-            cursor: 'pointer',
             float: isMobile ? 'none' : 'right',
             shapeOutside: isMobile ? 'none' : 'circle(50%)',
             marginLeft: isMobile ? '0' : '32px',
             marginBottom: '16px',
             marginRight: isMobile ? 'auto' : '0',
             marginTop: isMobile ? '24px' : '0',
+            position: 'relative',
+            zIndex: 10,
+            cursor: 'pointer',
           }}
-        />
+        >
+          <img 
+            src={getProfileImageSrc(currentProfileIndex)}
+            alt="Mitchell Read"
+            style={{
+              width: '120px',
+              height: '120px',
+              borderRadius: '50%',
+              objectFit: 'cover',
+              border: '2px solid var(--border-light)',
+              opacity: mounted ? 1 : 0,
+              transform: mounted ? 'translateY(0)' : 'translateY(15px)',
+              transition: isAnimating ? 'none' : 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s',
+              animation: isAnimating ? 'bounceInOut 0.6s ease-in-out' : 'none',
+              display: 'block',
+              pointerEvents: 'none',
+            }}
+          />
+        </div>
         
         <div style={{ 
           paddingRight: isMobile ? '0' : '0',

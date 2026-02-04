@@ -201,8 +201,8 @@ export default function App() {
           }}>
             Rember
           </h2>
-          <p style={{ 
-            fontSize: '1rem', 
+          <p style={{
+            fontSize: '1rem',
             fontWeight: 300,
             margin: '0 0 16px 0',
             color: 'var(--text-light)',
@@ -229,7 +229,7 @@ export default function App() {
             title="Rember Website"
             style={{
               width: '100%',
-              height: '600px',
+              height: '500px',
               border: `1px solid var(--border-iframe)`,
               borderRadius: '8px',
               marginTop: '24px',
@@ -267,11 +267,11 @@ export default function App() {
               Workday <span style={{ fontWeight: 400, color: 'var(--text-secondary)' }}>— 4 years</span>
             </h3>
             <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: 'var(--text-light)', margin: 0 }}>
-              Started as a co-op and grew to P3 Engineer. Led cross-functional initiatives
+              Started as a co-op and grew to a P3 Engineer. Led cross-functional initiatives
               integrating backend systems with web and mobile clients. Helped build a bespoke home experience
               that shipped to <UsersText>millions of users</UsersText> and surfaced dynamically renderable content from one of the largest
               and most configurable HCM/CRM platforms in the world. Experienced firsthand the pain
-              of rigid systems that fight users instead of serving them — the insight driving Rember.
+              of rigid systems that fight users instead of serving them.
             </p>
           </div>
 
@@ -285,9 +285,9 @@ export default function App() {
               Quantitative Analyst + Portfolio Manager - Public Markets
             </h3>
             <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: 'var(--text-light)', margin: 0 }}>
-              Co-op at BCI Pension Fund managing <MoneyText amount="big">$3.2B globally</MoneyText> in public equities.
-              Served as portfolio manager for the UVic investment fund, directly managing <MoneyText amount="small">$2.6M</MoneyText>.
-              Learned to make decisions with incomplete information and live with the consequences.
+              Co-op at BCI Pension Fund managing <MoneyText amount="big">$3.2B globally</MoneyText> for their quant funds.
+              Served as portfolio manager for University of Victoria's investment fund, directly managing <MoneyText amount="small">$2.6M</MoneyText>.
+              This gave me experience that every little detail matters so you better be thorough.
             </p>
           </div>
         </Section>
@@ -306,11 +306,6 @@ export default function App() {
             gap: '24px',
           }}>
             <WorkItem
-              title="Ship first, polish later"
-              description="I'd rather have something real in front of users than a perfect plan in a doc. Feedback from the world beats feedback from your head."
-              emoji="🚀"
-            />
-            <WorkItem
               title="Own the whole stack"
               description="I don't hand off problems. If it needs backend work, I do backend. If it needs infrastructure, I spin it up. Boundaries slow things down."
               emoji="🔧"
@@ -319,6 +314,11 @@ export default function App() {
               title="Stay close to the problem"
               description="The best software comes from genuine curiosity about the people using it. I talk to users constantly — not to validate, but to understand."
               emoji="🎯"
+            />
+            <WorkItem
+              title="Ship first, polish later"
+              description="I'd rather have something real in front of users than a perfect idea. Feedback from the world beats feedback from your head."
+              emoji="🚀"
             />
           </div>
         </Section>
