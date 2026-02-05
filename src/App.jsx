@@ -30,21 +30,20 @@ export default function App() {
     const fetchRepos = async () => {
       try {
         const response = await fetch(
-          'https://api.github.com/users/MitchellGRead/repos?sort=updated&per_page=6&type=owner'
+          'https://api.github.com/users/MitchellGRead/repos?sort=updated&per_page=6&type=all'
         );
         if (!response.ok) {
           throw new Error('Failed to fetch repos');
         }
         const data = await response.json();
-        // Filter out forks and map to component props
+        // Map to component props (including forks)
         const filteredRepos = data
-          .filter(repo => !repo.fork)
+          .filter(repo => !repo.archived)
           .map(repo => ({
             name: repo.name,
             description: repo.description,
             url: repo.html_url,
             language: repo.language,
-            stars: repo.stargazers_count,
           }));
         setRepos(filteredRepos);
         setReposLoading(false);
